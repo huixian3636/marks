@@ -184,3 +184,25 @@ static char *nl_langinfo(nl_item item)
 #endif
 
 #endif  /* _LANGINFO_H */
+return run('@tailwind utilities', config).then((result) => {
+      expect(result.css).toMatchFormattedCss(css`
+        @keyframes tw-zoom-\.5 {
+          to {
+            transform: scale(0.5);
+          }
+        }
+        .tw-animate-zoom-\.5 {
+          animation: 2s tw-zoom-\.5;
+        }
+        @keyframes tw-zoom-1\.5 {
+          to {
+            transform: scale(1.5);
+          }
+        }
+        .tw-animate-zoom-1\.5 {
+          animation: 2s tw-zoom-1\.5;
+        }
+      `)
+    })
+  })
+})
